@@ -1,0 +1,69 @@
+{% extends 'layout/base.html' %} {% block content %}
+<div class="container">
+  <div class="col-sm-12 text-center mt-5">
+    <h3><strong>Form Edit Student</strong></h3>
+  </div>
+  <a href="/" class="btn btn-info mb-5">Kembali</a>
+
+  <div class="container jumbotron">
+    <form method="POST" class="post-form" action="/edit/{{ students.id }}">
+      <input
+        type="hidden"
+        name="id"
+        required
+        maxlength="20"
+        value="{{ students.id }}"
+      />
+      {% csrf_token %}
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Studen Name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            name="f_name"
+            value="{{ students.f_name }}"
+            maxlength="100"
+            required
+            id="id_f_name"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Studen Name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            name="l_name"
+            value="{{ students.l_name }}"
+            maxlength="100"
+            required
+            id="id_l_name"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Studen Email</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            name="email"
+            value="{{ students.email }}"
+            maxlength="20"
+            required
+            id="id_email"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="text-right col-sm-12">
+        <button type="submit" class="btn btn-primary">Save Change</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
