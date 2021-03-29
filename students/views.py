@@ -55,10 +55,14 @@ def edit(request, id):
 
 
 def delete(request, id):
-    students = Students.objects.get(id=id)
-    students.delete()
-    messages.success(request, 'Delete Data Berhasil')
-    return redirect('/')
+    if request.method == 'POST':
+        students = Students.objects.get(id=id)
+        students.delete()
+        messages.success(request, 'Delete Data Berhasil')
+        return redirect('/')
+    else:
+        messages.success(request, 'Delete Data gagal')
+        return redirect('/')
 
 
 def export_users_xls(request):
